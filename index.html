@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FRUTTÉ — Pulpa de Fruta Natural de Larga Vida</title>
+    <meta name="description" content="Pulpa de fruta 100% natural, pasteurizada, sin conservantes. Lista para usar, sin congelador. Para tu hogar y tu negocio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1B5E20;
+            --primary-light: #388E3C;
+            --primary-dark: #0D3311;
+            --accent: #FF6D00;
+            --accent-light: #FF9E40;
+            --warm: #FFF8E1;
+            --cream: #FFFDF5;
+            --text: #1a1a1a;
+            --text-mid: #4a4a4a;
+            --text-light: #777;
+            --white: #ffffff;
+            --border: #e8e8e8;
+            --shadow: 0 4px 24px rgba(0,0,0,0.08);
+            --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+            --radius: 16px;
+            --radius-sm: 10px;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            color: var(--text);
+            background: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* ===== UTILITIES ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-label {
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 5vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.15;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-mid);
+            max-width: 600px;
+            line-height: 1.7;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+            box-shadow: 0 4px 16px rgba(255,109,0,0.3);
+        }
+        .btn-primary:hover {
+            background: #e56200;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(255,109,0,0.4);
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary-dark);
+            box-shadow: var(--shadow);
+        }
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-whatsapp {
+            background: #25D366;
+            color: white;
+            box-shadow: 0 4px 16px rgba(37,211,102,0.3);
+        }
+        .btn-whatsapp:hover {
+            background: #1da851;
+            transform: translateY(-2px);
+        }
+
+        /* ===== NAV ===== */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            transition: all 0.3s;
+        }
+        nav.scrolled {
+            box-shadow: 0 2px 20px rgba(0,0,0,0.08);
+        }
+        .nav-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 72px;
+        }
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+        }
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: var(--primary-dark);
+        }
+        .logo-text span {
+            color: var(--accent);
+        }
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            list-style: none;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-mid);
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+
+        .nav-cta {
+            padding: 10px 24px !important;
+            font-size: 0.85rem !important;
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        .menu-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--text);
+            margin: 6px 0;
+            transition: all 0.3s;
+            border-radius: 2px;
+        }
+        .menu-toggle.active span:nth-child(1) { transform: rotate(45deg) translate(5px, 6px); }
+        .menu-toggle.active span:nth-child(2) { opacity: 0; }
+        .menu-toggle.active span:nth-child(3) { transform: rotate(-45deg) translate(5px, -6px); }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 140px 0 100px;
+            background: linear-gradient(160deg, var(--cream) 0%, #f0f9f0 50%, #e8f5e9 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            right: -100px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255,109,0,0.08) 0%, transparent 70%);
+        }
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content { position: relative; z-index: 1; }
+        .hero-badge {
+            display: inline-block;
+            background: white;
+            border: 1px solid var(--border);
+            border-radius: 50px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 24px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+        }
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5.5vw, 4rem);
+            font-weight: 700;
+            line-height: 1.1;
+            color: var(--primary-dark);
+            margin-bottom: 20px;
+        }
+        .hero h1 em {
+            color: var(--accent);
+            font-style: italic;
+        }
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-mid);
+            line-height: 1.7;
+            margin-bottom: 36px;
+            max-width: 480px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .hero-visual {
+            position: relative;
+            z-index: 1;
+            display: flex;
+            justify-content: center;
+        }
+        .hero-fruit-display {
+            width: 420px;
+            height: 420px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #ff9e40 0%, #ff6d00 50%, #e65100 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(255,109,0,0.25);
+        }
+        .hero-fruit-display::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border-radius: 50%;
+            border: 2px solid rgba(255,255,255,0.3);
+        }
+        .hero-fruit-inner {
+            text-align: center;
+            color: white;
+        }
+        .hero-fruit-inner .fruit-emoji {
+            font-size: 5rem;
+            display: block;
+            margin-bottom: 8px;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.2));
+        }
+        .hero-fruit-inner .fruit-text {
+            font-size: 1.1rem;
+            font-weight: 700;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            opacity: 0.9;
+        }
+        .hero-fruit-inner .fruit-sub {
+            font-size: 0.85rem;
+            font-weight: 400;
+            opacity: 0.8;
+            margin-top: 4px;
+        }
+        .floating-badge {
+            position: absolute;
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 12px 18px;
+            box-shadow: var(--shadow-lg);
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: var(--text);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .floating-badge.top-left { top: 20px; left: -30px; }
+        .floating-badge.bottom-right { bottom: 30px; right: -20px; }
+        .floating-badge .badge-icon {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+        .floating-badge .badge-icon.green { background: #e8f5e9; }
+        .floating-badge .badge-icon.orange { background: #fff3e0; }
+
+        /* ===== BENEFITS BAR ===== */
+        .benefits-bar {
+            background: var(--primary-dark);
+            color: white;
+            padding: 28px 0;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            text-align: center;
+        }
+        .benefit-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+        }
+        .benefit-icon { font-size: 1.5rem; }
+        .benefit-text {
+            font-size: 0.85rem;
+            font-weight: 600;
+            opacity: 0.95;
+        }
+        .benefit-sub {
+            font-size: 0.75rem;
+            opacity: 0.65;
+        }
+
+        /* ===== PRODUCTS ===== */
+        .products {
+            padding: 100px 0;
+        }
+        .products-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .products-header .section-subtitle {
+            margin: 0 auto;
+        }
+        .flavors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 20px;
+            margin-bottom: 48px;
+        }
+        .flavor-card {
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 28px 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+        .flavor-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+            border-color: transparent;
+        }
+        .flavor-emoji {
+            font-size: 3rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .flavor-name {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 4px;
+        }
+        .flavor-tag {
+            font-size: 0.75rem;
+            color: var(--text-light);
+        }
+
+        .presentations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+        }
+        .presentation-card {
+            background: #f8faf8;
+            border-radius: var(--radius);
+            padding: 28px 24px;
+            text-align: center;
+        }
+        .presentation-card h4 {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 4px;
+        }
+        .presentation-card p {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* ===== WHY SECTION ===== */
+        .why-section {
+            padding: 100px 0;
+            background: var(--cream);
+        }
+        .why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        .why-features {
+            display: grid;
+            gap: 28px;
+        }
+        .why-feature {
+            display: flex;
+            gap: 20px;
+        }
+        .why-feature-icon {
+            flex-shrink: 0;
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+        }
+        .why-feature-icon.green { background: #e8f5e9; }
+        .why-feature-icon.orange { background: #fff3e0; }
+        .why-feature-icon.blue { background: #e3f2fd; }
+        .why-feature-icon.purple { background: #f3e5f5; }
+        .why-feature h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+        .why-feature p {
+            font-size: 0.9rem;
+            color: var(--text-mid);
+            line-height: 1.6;
+        }
+
+        .why-visual {
+            position: relative;
+        }
+        .why-card-big {
+            background: white;
+            border-radius: var(--radius);
+            padding: 48px 40px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+        .why-card-big .big-number {
+            font-size: 4rem;
+            font-weight: 900;
+            color: var(--primary);
+            line-height: 1;
+        }
+        .why-card-big .big-label {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text);
+            margin-top: 8px;
+        }
+        .why-card-big .big-desc {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            margin-top: 8px;
+        }
+        .why-mini-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-top: 20px;
+        }
+        .why-mini {
+            background: white;
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+        .why-mini .mini-val {
+            font-size: 1.6rem;
+            font-weight: 800;
+            color: var(--accent);
+        }
+        .why-mini .mini-label {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            margin-top: 2px;
+        }
+
+        /* ===== B2B SECTION ===== */
+        .b2b {
+            padding: 100px 0;
+            background: var(--primary-dark);
+            color: white;
+        }
+        .b2b .section-label { color: var(--accent-light); }
+        .b2b .section-title { color: white; }
+        .b2b .section-subtitle { color: rgba(255,255,255,0.7); }
+
+        .b2b-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 48px;
+        }
+        .b2b-card {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: var(--radius);
+            padding: 36px 28px;
+            transition: all 0.3s;
+        }
+        .b2b-card:hover {
+            background: rgba(255,255,255,0.1);
+            transform: translateY(-4px);
+        }
+        .b2b-card-icon {
+            font-size: 2rem;
+            margin-bottom: 16px;
+            display: block;
+        }
+        .b2b-card h4 {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        .b2b-card p {
+            font-size: 0.9rem;
+            color: rgba(255,255,255,0.65);
+            line-height: 1.6;
+        }
+        .b2b-card .b2b-formats {
+            margin-top: 16px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        .b2b-card .b2b-tag {
+            background: rgba(255,255,255,0.1);
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        /* ===== PROCESS ===== */
+        .process {
+            padding: 100px 0;
+        }
+        .process-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        .process-header .section-subtitle { margin: 0 auto; }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            position: relative;
+        }
+        .process-step {
+            text-align: center;
+            padding: 28px 16px;
+            position: relative;
+        }
+        .step-number {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 16px;
+        }
+        .step-number.accent { background: var(--accent); }
+        .process-step h4 {
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .process-step p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            line-height: 1.5;
+        }
+
+        .certifications {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 48px;
+            flex-wrap: wrap;
+        }
+        .cert {
+            text-align: center;
+        }
+        .cert-badge {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #f5f5f5;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            color: var(--primary);
+            border: 2px solid var(--border);
+        }
+        .cert span {
+            font-size: 0.78rem;
+            color: var(--text-light);
+            font-weight: 500;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            text-align: center;
+        }
+        .cta-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+        .cta-section p {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            max-width: 500px;
+            margin: 0 auto 36px;
+        }
+        .cta-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #0a1f0d;
+            color: rgba(255,255,255,0.6);
+            padding: 60px 0 30px;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        .footer-brand .logo-text {
+            color: white;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .footer-brand p {
+            font-size: 0.88rem;
+            line-height: 1.7;
+        }
+        .footer-col h4 {
+            color: white;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+        }
+        .footer-col a {
+            display: block;
+            color: rgba(255,255,255,0.55);
+            text-decoration: none;
+            font-size: 0.88rem;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+        .footer-col a:hover { color: white; }
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.8rem;
+        }
+
+        /* ===== MOBILE NAV OVERLAY ===== */
+        .mobile-menu {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            z-index: 999;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+        }
+        .mobile-menu.active { display: flex; }
+        .mobile-menu a {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text);
+            text-decoration: none;
+        }
+        .mobile-menu .close-menu {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: var(--text);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 968px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                text-align: center;
+            }
+            .hero p { margin: 0 auto 36px; }
+            .hero-buttons { justify-content: center; }
+            .hero-fruit-display {
+                width: 300px;
+                height: 300px;
+                margin: 0 auto;
+            }
+            .hero-fruit-inner .fruit-emoji { font-size: 3.5rem; }
+            .floating-badge.top-left { left: 10px; top: 0; }
+            .floating-badge.bottom-right { right: 10px; bottom: 10px; }
+            .why-grid {
+                grid-template-columns: 1fr;
+                gap: 48px;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .menu-toggle { display: block; }
+            .hero { padding: 110px 0 60px; }
+            .hero h1 { font-size: 2.2rem; }
+            .hero p { font-size: 1rem; }
+            .benefits-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .benefit-text { font-size: 0.78rem; }
+            .flavors-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 12px;
+            }
+            .flavor-card { padding: 20px 12px; }
+            .flavor-emoji { font-size: 2.2rem; margin-bottom: 8px; }
+            .flavor-name { font-size: 0.85rem; }
+            .presentations {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .b2b-grid {
+                grid-template-columns: 1fr;
+            }
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .why-mini-cards {
+                grid-template-columns: 1fr 1fr;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 28px;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                gap: 8px;
+                text-align: center;
+            }
+            section, .products, .why-section, .b2b, .process, .cta-section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero-fruit-display { width: 240px; height: 240px; }
+            .hero-fruit-inner .fruit-emoji { font-size: 2.8rem; }
+            .floating-badge { display: none; }
+            .benefits-grid { grid-template-columns: 1fr 1fr; }
+            .flavors-grid { grid-template-columns: repeat(2, 1fr); }
+            .process-steps { grid-template-columns: 1fr; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .cta-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; justify-content: center; }
+            .why-card-big { padding: 32px 20px; }
+            .why-card-big .big-number { font-size: 3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+    <div class="container nav-inner">
+        <a href="#" class="nav-logo">
+            <svg class="logo-icon" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="20" fill="#1B5E20"/>
+                <ellipse cx="20" cy="21" rx="11" ry="12" fill="#FF6D00"/>
+                <path d="M20 6C20 6 22 10 21 14C20 10 18 6 20 6Z" fill="#388E3C"/>
+                <path d="M20 6C20 6 24 8 23 12" stroke="#2E7D32" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                <ellipse cx="17" cy="19" rx="3" ry="4" fill="rgba(255,255,255,0.15)"/>
+            </svg>
+            <span class="logo-text">FRUTT<span>&Eacute;</span></span>
+        </a>
+        <ul class="nav-links">
+            <li><a href="#productos">Productos</a></li>
+            <li><a href="#por-que">Por qu&eacute; Frutt&eacute;</a></li>
+            <li><a href="#negocios">Para Negocios</a></li>
+            <li><a href="#proceso">Proceso</a></li>
+            <li><a href="#contacto" class="btn btn-primary nav-cta">Cont&aacute;ctanos</a></li>
+        </ul>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">&times;</button>
+    <a href="#productos" onclick="closeMobile()">Productos</a>
+    <a href="#por-que" onclick="closeMobile()">Por qu&eacute; Frutt&eacute;</a>
+    <a href="#negocios" onclick="closeMobile()">Para Negocios</a>
+    <a href="#proceso" onclick="closeMobile()">Proceso</a>
+    <a href="#contacto" class="btn btn-primary" onclick="closeMobile()">Cont&aacute;ctanos</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+    <div class="container hero-grid">
+        <div class="hero-content">
+            <div class="hero-badge">100% Natural &middot; Sin conservantes</div>
+            <h1>Pulpa de fruta <em>real</em>, lista cuando t&uacute; quieras</h1>
+            <p>Sin congelador, sin descongelar, sin complicaciones. Pulpa pasteurizada de larga vida con todo el sabor de la fruta colombiana.</p>
+            <div class="hero-buttons">
+                <a href="#productos" class="btn btn-primary">Ver productos</a>
+                <a href="#negocios" class="btn btn-outline">Para tu negocio</a>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-fruit-display">
+                <div class="hero-fruit-inner">
+                    <span class="fruit-emoji" id="heroEmoji">&#127816;</span>
+                    <span class="fruit-text" id="heroFruit">Mango</span>
+                    <span class="fruit-sub">Cosecha colombiana</span>
+                </div>
+                <div class="floating-badge top-left">
+                    <span class="badge-icon green">&#10003;</span>
+                    Sin congelador
+                </div>
+                <div class="floating-badge bottom-right">
+                    <span class="badge-icon orange">&#9201;</span>
+                    Hasta 24 meses
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- BENEFITS BAR -->
+<div class="benefits-bar">
+    <div class="container">
+        <div class="benefits-grid">
+            <div class="benefit-item">
+                <span class="benefit-icon">&#127807;</span>
+                <span class="benefit-text">100% Natural</span>
+                <span class="benefit-sub">Sin conservantes ni aditivos</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-icon">&#128293;</span>
+                <span class="benefit-text">Pasteurizada</span>
+                <span class="benefit-sub">Segura y de larga vida</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-icon">&#10052;</span>
+                <span class="benefit-text">Sin congelador</span>
+                <span class="benefit-sub">Almac&eacute;nala donde quieras</span>
+            </div>
+            <div class="benefit-item">
+                <span class="benefit-icon">&#127464;&#127476;</span>
+                <span class="benefit-text">Fruta colombiana</span>
+                <span class="benefit-sub">Directo del agricultor</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PRODUCTS -->
+<section class="products" id="productos">
+    <div class="container">
+        <div class="products-header">
+            <div class="section-label">Nuestros Sabores</div>
+            <h2 class="section-title">El sabor de Colombia en cada sobre</h2>
+            <p class="section-subtitle">Frutas seleccionadas en su punto &oacute;ptimo de madurez, pasteurizadas para conservar todo su sabor y nutrientes.</p>
+        </div>
+
+        <div class="flavors-grid">
+            <div class="flavor-card">
+                <span class="flavor-emoji">&#127816;</span>
+                <div class="flavor-name">Mango</div>
+                <div class="flavor-tag">La m&aacute;s exportada</div>
+            </div>
+            <div class="flavor-card">
+                <span class="flavor-emoji">&#127817;</span>
+                <div class="flavor-name">Maracuy&aacute;</div>
+                <div class="flavor-tag">Tropical intensa</div>
+            </div>
+            <div class="flavor-card">
+                <span class="flavor-emoji">&#129389;</span>
+                <div class="flavor-name">Guayaba</div>
+                <div class="flavor-tag">Cl&aacute;sica colombiana</div>
+            </div>
+            <div class="flavor-card">
+                <span class="flavor-emoji">&#129744;</span>
+                <div class="flavor-name">Mora</div>
+                <div class="flavor-tag">Precio estable</div>
+            </div>
+            <div class="flavor-card">
+                <span class="flavor-emoji">&#127818;</span>
+                <div class="flavor-name">Lulo</div>
+                <div class="flavor-tag">Ex&oacute;tica &uacute;nica</div>
+            </div>
+            <div class="flavor-card">
+                <span class="flavor-emoji">&#127821;</span>
+                <div class="flavor-name">Guan&aacute;bana</div>
+                <div class="flavor-tag">Premium</div>
+            </div>
+        </div>
+
+        <div class="section-label" style="text-align:center;">Presentaciones</div>
+        <div class="presentations">
+            <div class="presentation-card">
+                <h4>250g</h4>
+                <p>Individual &middot; Tienda de barrio</p>
+            </div>
+            <div class="presentation-card">
+                <h4>500g</h4>
+                <p>Familiar &middot; Supermercado</p>
+            </div>
+            <div class="presentation-card">
+                <h4>1 kg</h4>
+                <p>Familiar grande &middot; HoReCa</p>
+            </div>
+            <div class="presentation-card">
+                <h4>5-20L</h4>
+                <p>Institucional &middot; Bag-in-Box</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHY SECTION -->
+<section class="why-section" id="por-que">
+    <div class="container">
+        <div class="why-grid">
+            <div>
+                <div class="section-label">Nuestra Diferencia</div>
+                <h2 class="section-title">&iquest;Por qu&eacute; pasteurizada y no congelada?</h2>
+                <div class="why-features">
+                    <div class="why-feature">
+                        <div class="why-feature-icon green">&#10052;</div>
+                        <div>
+                            <h4>Sin cadena de fr&iacute;o</h4>
+                            <p>No necesitas congelador. Almac&eacute;nala en cualquier estante a temperatura ambiente.</p>
+                        </div>
+                    </div>
+                    <div class="why-feature">
+                        <div class="why-feature-icon orange">&#9201;</div>
+                        <div>
+                            <h4>Lista para usar</h4>
+                            <p>Nada de esperar a que descongele. Abres y sirves. As&iacute; de f&aacute;cil.</p>
+                        </div>
+                    </div>
+                    <div class="why-feature">
+                        <div class="why-feature-icon blue">&#128170;</div>
+                        <div>
+                            <h4>Mismos nutrientes</h4>
+                            <p>La pasteurizaci&oacute;n preserva el sabor y los nutrientes de la fruta fresca.</p>
+                        </div>
+                    </div>
+                    <div class="why-feature">
+                        <div class="why-feature-icon purple">&#128640;</div>
+                        <div>
+                            <h4>Llega a cualquier parte</h4>
+                            <p>Desde Bogot&aacute; hasta el pueblo m&aacute;s remoto. Sin depender de cadena de fr&iacute;o.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="why-visual">
+                <div class="why-card-big">
+                    <div class="big-number">24</div>
+                    <div class="big-label">Meses de vida &uacute;til</div>
+                    <div class="big-desc">A temperatura ambiente, sin refrigeraci&oacute;n</div>
+                </div>
+                <div class="why-mini-cards">
+                    <div class="why-mini">
+                        <div class="mini-val">0&deg;C</div>
+                        <div class="mini-label">Refrigeraci&oacute;n requerida</div>
+                    </div>
+                    <div class="why-mini">
+                        <div class="mini-val">100%</div>
+                        <div class="mini-label">Fruta natural colombiana</div>
+                    </div>
+                    <div class="why-mini">
+                        <div class="mini-val">0</div>
+                        <div class="mini-label">Conservantes a&ntilde;adidos</div>
+                    </div>
+                    <div class="why-mini">
+                        <div class="mini-val">60s</div>
+                        <div class="mini-label">Lista para servir</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- B2B -->
+<section class="b2b" id="negocios">
+    <div class="container">
+        <div class="section-label">Para Tu Negocio</div>
+        <h2 class="section-title">Pulpa que simplifica tu operaci&oacute;n</h2>
+        <p class="section-subtitle">Sin congelador, sin merma, sin complicaciones. Frutt&eacute; es el aliado de restaurantes, hoteles, bares de jugo, cadenas y distribuidores.</p>
+
+        <div class="b2b-grid">
+            <div class="b2b-card">
+                <span class="b2b-card-icon">&#127860;</span>
+                <h4>Restaurantes y Hoteles</h4>
+                <p>Reduce espacio en congelador y merma. Pulpa lista para servir en jugos, c&oacute;cteles, postres y salsas.</p>
+                <div class="b2b-formats">
+                    <span class="b2b-tag">1 kg</span>
+                    <span class="b2b-tag">5L Bag-in-Box</span>
+                </div>
+            </div>
+            <div class="b2b-card">
+                <span class="b2b-card-icon">&#127963;</span>
+                <h4>Tiendas y Distribuidores</h4>
+                <p>Producto de estante que no necesita congelador. Ideal para tiendas de barrio, minimercados y hard discount.</p>
+                <div class="b2b-formats">
+                    <span class="b2b-tag">250g</span>
+                    <span class="b2b-tag">500g</span>
+                    <span class="b2b-tag">Marca blanca</span>
+                </div>
+            </div>
+            <div class="b2b-card">
+                <span class="b2b-card-icon">&#127758;</span>
+                <h4>Exportaci&oacute;n</h4>
+                <p>Empaque as&eacute;ptico de grado industrial. Env&iacute;o en contenedor seco est&aacute;ndar. 24 meses de vida &uacute;til.</p>
+                <div class="b2b-formats">
+                    <span class="b2b-tag">20L</span>
+                    <span class="b2b-tag">200L Tambor</span>
+                    <span class="b2b-tag">HACCP</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="proceso">
+    <div class="container">
+        <div class="process-header">
+            <div class="section-label">Nuestro Proceso</div>
+            <h2 class="section-title">De la finca a tu mesa, con ciencia</h2>
+            <p class="section-subtitle">Trabajamos directamente con agricultores colombianos. Cada fruta se selecciona en su punto &oacute;ptimo y se pasteuriza con tecnolog&iacute;a de punta.</p>
+        </div>
+
+        <div class="process-steps">
+            <div class="process-step">
+                <div class="step-number">1</div>
+                <h4>Selecci&oacute;n</h4>
+                <p>Fruta en su punto &oacute;ptimo de madurez, directo del agricultor</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">2</div>
+                <h4>Lavado</h4>
+                <p>Limpieza y desinfecci&oacute;n bajo est&aacute;ndares BPM</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">3</div>
+                <h4>Despulpado</h4>
+                <p>Extracci&oacute;n mec&aacute;nica de la pulpa, sin aditivos</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number accent">4</div>
+                <h4>Pasteurizaci&oacute;n</h4>
+                <p>Tratamiento t&eacute;rmico HTST que elimina microorganismos preservando sabor</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number accent">5</div>
+                <h4>Llenado As&eacute;ptico</h4>
+                <p>Empaque en ambiente est&eacute;ril para m&aacute;xima vida &uacute;til</p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">6</div>
+                <h4>Tu mesa</h4>
+                <p>Almacenamiento a temperatura ambiente, lista para disfrutar</p>
+            </div>
+        </div>
+
+        <div class="certifications">
+            <div class="cert">
+                <div class="cert-badge">INVIMA</div>
+                <span>Registro Sanitario</span>
+            </div>
+            <div class="cert">
+                <div class="cert-badge">BPM</div>
+                <span>Buenas Pr&aacute;cticas</span>
+            </div>
+            <div class="cert">
+                <div class="cert-badge">HACCP</div>
+                <span>Seguridad Alimentaria</span>
+            </div>
+            <div class="cert">
+                <div class="cert-badge">NTC</div>
+                <span>Norma T&eacute;cnica</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contacto">
+    <div class="container">
+        <h2>&iquest;Listo para probar Frutt&eacute;?</h2>
+        <p>Escr&iacute;benos por WhatsApp o correo. Ya seas consumidor, tienda, restaurante o importador, tenemos la presentaci&oacute;n perfecta para ti.</p>
+        <div class="cta-buttons">
+            <a href="https://wa.me/573001234567?text=Hola%2C%20me%20interesa%20Frutt%C3%A9" class="btn btn-whatsapp" target="_blank">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Escr&iacute;benos por WhatsApp
+            </a>
+            <a href="mailto:hola@frutte.com.co" class="btn btn-white">hola@frutte.com.co</a>
+        </div>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <span class="logo-text" style="font-size:1.3rem;">FRUTT<span style="color:var(--accent);">&Eacute;</span></span>
+                <p>Pulpa de fruta 100% natural, pasteurizada, de larga vida. Hecha en Colombia con fruta de nuestros agricultores.</p>
+            </div>
+            <div class="footer-col">
+                <h4>Productos</h4>
+                <a href="#productos">Sabores</a>
+                <a href="#productos">Presentaciones</a>
+                <a href="#negocios">Para negocios</a>
+                <a href="#negocios">Exportaci&oacute;n</a>
+            </div>
+            <div class="footer-col">
+                <h4>Empresa</h4>
+                <a href="#por-que">Por qu&eacute; Frutt&eacute;</a>
+                <a href="#proceso">Nuestro proceso</a>
+                <a href="#">Sostenibilidad</a>
+            </div>
+            <div class="footer-col">
+                <h4>Contacto</h4>
+                <a href="https://wa.me/573001234567" target="_blank">WhatsApp</a>
+                <a href="mailto:hola@frutte.com.co">hola@frutte.com.co</a>
+                <a href="#">Colombia</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2026 Frutt&eacute;. Todos los derechos reservados.</span>
+            <span>Hecho con fruta colombiana</span>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+        navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    menuToggle.addEventListener('click', () => {
+        mobileMenu.classList.add('active');
+        menuToggle.classList.add('active');
+    });
+    closeMenu.addEventListener('click', closeMobile);
+    function closeMobile() {
+        mobileMenu.classList.remove('active');
+        menuToggle.classList.remove('active');
+    }
+
+    // Hero fruit rotation
+    const fruits = [
+        { emoji: '\u{1F34C}', name: 'Mango' },
+        { emoji: '\u{1F34B}', name: 'Maracuy\u00e1' },
+        { emoji: '\u{1F353}', name: 'Guayaba' },
+        { emoji: '\u{1FAD0}', name: 'Mora' },
+        { emoji: '\u{1F34A}', name: 'Lulo' },
+        { emoji: '\u{1F34D}', name: 'Guan\u00e1bana' }
+    ];
+    let currentFruit = 0;
+    const heroEmoji = document.getElementById('heroEmoji');
+    const heroFruit = document.getElementById('heroFruit');
+
+    setInterval(() => {
+        currentFruit = (currentFruit + 1) % fruits.length;
+        heroEmoji.style.opacity = 0;
+        heroFruit.style.opacity = 0;
+        setTimeout(() => {
+            heroEmoji.textContent = fruits[currentFruit].emoji;
+            heroFruit.textContent = fruits[currentFruit].name;
+            heroEmoji.style.opacity = 1;
+            heroFruit.style.opacity = 1;
+        }, 300);
+    }, 3000);
+
+    heroEmoji.style.transition = 'opacity 0.3s';
+    heroFruit.style.transition = 'opacity 0.3s';
+</script>
+
+</body>
+</html>
