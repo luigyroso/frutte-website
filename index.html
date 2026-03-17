@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FRUTT&Eacute; &mdash; Pulpa de Fruta Natural de Larga Vida</title>
-    <meta name="description" content="Pulpa de fruta 100% natural, pasteurizada, sin conservantes. Lista para usar, sin congelador. Para tu hogar y tu negocio. Env&iacute;os a toda Colombia.">
+    <meta name="description" content="Pulpa de fruta 100% natural, pasteurizada, sin conservantes. De Colombia al mundo. Para tu hogar y tu negocio.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
@@ -76,11 +76,18 @@
         /* ===== NAV ===== */
         nav {
             position:fixed; top:0; left:0; right:0; z-index:1000;
-            background:rgba(255,255,255,0.92);
-            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
-            border-bottom:1px solid rgba(0,0,0,0.06); transition:all 0.3s;
+            background:transparent; transition:all 0.4s;
         }
-        nav.scrolled { box-shadow:0 2px 20px rgba(0,0,0,0.08); }
+        nav.scrolled {
+            background:rgba(255,255,255,0.95);
+            backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px);
+            box-shadow:0 2px 20px rgba(0,0,0,0.08);
+            border-bottom:1px solid rgba(0,0,0,0.06);
+        }
+        nav:not(.scrolled) .logo-text { color:white; }
+        nav:not(.scrolled) .nav-links a { color:rgba(255,255,255,0.85); }
+        nav:not(.scrolled) .nav-links a:hover { color:white; }
+        nav:not(.scrolled) .menu-toggle span { background:white; }
         .nav-inner { display:flex; align-items:center; justify-content:space-between; height:72px; }
         .nav-logo { display:flex; align-items:center; gap:10px; text-decoration:none; }
         .logo-icon { width:40px; height:40px; }
@@ -96,62 +103,109 @@
         .menu-toggle.active span:nth-child(2) { opacity:0; }
         .menu-toggle.active span:nth-child(3) { transform:rotate(-45deg) translate(5px,-6px); }
 
-        /* ===== HERO ===== */
+        /* ===== HERO VIDEO ===== */
         .hero {
-            padding:140px 0 100px;
-            background:linear-gradient(160deg,var(--cream) 0%,#f0f9f0 50%,#e8f5e9 100%);
-            position:relative; overflow:hidden;
+            position:relative; min-height:100vh; display:flex;
+            align-items:center; overflow:hidden;
         }
-        .hero::after {
-            content:''; position:absolute; right:-100px; top:50%; transform:translateY(-50%);
-            width:600px; height:600px; border-radius:50%;
-            background:radial-gradient(circle,rgba(255,109,0,0.08) 0%,transparent 70%);
+        .hero-video {
+            position:absolute; inset:0; z-index:0;
         }
-        .hero-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
-        .hero-content { position:relative; z-index:1; }
+        .hero-video video {
+            width:100%; height:100%; object-fit:cover;
+        }
+        .hero-video::after {
+            content:''; position:absolute; inset:0;
+            background:linear-gradient(
+                160deg,
+                rgba(13,51,17,0.85) 0%,
+                rgba(13,51,17,0.7) 40%,
+                rgba(255,109,0,0.3) 100%
+            );
+        }
+        .hero-content {
+            position:relative; z-index:2; color:white;
+            max-width:720px;
+        }
         .hero-badge {
-            display:inline-block; background:white; border:1px solid var(--border);
-            border-radius:50px; padding:6px 16px; font-size:0.8rem; font-weight:600;
-            color:var(--primary); margin-bottom:24px; box-shadow:0 2px 8px rgba(0,0,0,0.04);
+            display:inline-block;
+            background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2);
+            backdrop-filter:blur(8px);
+            border-radius:50px; padding:8px 20px; font-size:0.8rem; font-weight:600;
+            color:white; margin-bottom:28px; letter-spacing:0.5px;
         }
         .hero h1 {
             font-family:'Playfair Display',serif;
-            font-size:clamp(2.5rem,5.5vw,4rem);
-            font-weight:700; line-height:1.1; color:var(--primary-dark); margin-bottom:20px;
+            font-size:clamp(2.8rem,6vw,4.8rem);
+            font-weight:700; line-height:1.05; color:white; margin-bottom:24px;
         }
-        .hero h1 em { color:var(--accent); font-style:italic; }
-        .hero p { font-size:1.15rem; color:var(--text-mid); line-height:1.7; margin-bottom:36px; max-width:480px; }
-        .hero-buttons { display:flex; gap:16px; flex-wrap:wrap; }
-        .hero-visual { position:relative; z-index:1; display:flex; justify-content:center; }
-        .hero-img-wrap {
-            width:460px; height:460px; border-radius:32px; overflow:hidden;
-            box-shadow:var(--shadow-lg); position:relative;
+        .hero h1 em { color:var(--accent-light); font-style:italic; }
+        .hero p {
+            font-size:1.2rem; color:rgba(255,255,255,0.85);
+            line-height:1.7; margin-bottom:40px; max-width:540px;
         }
-        .hero-img-wrap img {
-            width:100%; height:100%; object-fit:cover;
+        .hero-buttons { display:flex; gap:16px; flex-wrap:wrap; margin-bottom:48px; }
+        .hero-stats {
+            display:flex; gap:40px; flex-wrap:wrap;
         }
-        .hero-img-overlay {
-            position:absolute; inset:0;
-            background:linear-gradient(to top,rgba(13,51,17,0.5) 0%,transparent 50%);
+        .hero-stat { text-align:left; }
+        .hero-stat .hs-val {
+            font-size:2.2rem; font-weight:800; color:white; line-height:1;
         }
-        .hero-img-text {
-            position:absolute; bottom:28px; left:28px; color:white; z-index:2;
+        .hero-stat .hs-label {
+            font-size:0.78rem; color:rgba(255,255,255,0.6);
+            font-weight:500; margin-top:4px;
         }
-        .hero-img-text .hit { font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; opacity:0.8; }
-        .hero-img-text .hiv { font-size:1.3rem; font-weight:800; }
-        .floating-badge {
-            position:absolute; background:white; border-radius:var(--radius-sm);
-            padding:12px 18px; box-shadow:var(--shadow-lg); font-size:0.82rem;
-            font-weight:600; color:var(--text); display:flex; align-items:center; gap:8px; z-index:3;
+        .hero-scroll {
+            position:absolute; bottom:32px; left:50%; transform:translateX(-50%);
+            z-index:2; color:rgba(255,255,255,0.5); text-align:center;
+            font-size:0.75rem; font-weight:500; letter-spacing:1px;
+            animation:float 2s ease-in-out infinite;
         }
-        .floating-badge.top-left { top:20px; left:-30px; }
-        .floating-badge.bottom-right { bottom:30px; right:-20px; }
-        .fb-icon {
-            width:32px; height:32px; border-radius:50%;
-            display:flex; align-items:center; justify-content:center; font-size:1rem;
+        .hero-scroll span { display:block; font-size:1.4rem; margin-top:4px; }
+        @keyframes float { 0%,100%{transform:translateX(-50%) translateY(0);} 50%{transform:translateX(-50%) translateY(8px);} }
+
+        /* ===== EXPORT SECTION ===== */
+        .export { padding:100px 0; background:#fafdf7; }
+        .export-header { text-align:center; margin-bottom:60px; }
+        .export-header .section-subtitle { margin:0 auto; }
+        .export-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; }
+        .export-map { position:relative; }
+        .export-map svg { width:100%; max-width:500px; margin:0 auto; display:block; }
+        .export-countries {
+            display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:32px;
         }
-        .fb-icon.green { background:#e8f5e9; }
-        .fb-icon.orange { background:#fff3e0; }
+        .export-country {
+            display:flex; align-items:center; gap:10px;
+            background:white; border:1px solid var(--border);
+            border-radius:var(--radius-sm); padding:12px 16px;
+            transition:all 0.2s;
+        }
+        .export-country:hover { box-shadow:var(--shadow); border-color:var(--primary-light); }
+        .export-flag { font-size:1.4rem; }
+        .export-country-info { }
+        .export-country-name { font-size:0.88rem; font-weight:700; }
+        .export-country-detail { font-size:0.72rem; color:var(--text-light); }
+        .export-content { }
+        .export-features { display:grid; gap:20px; margin-top:28px; }
+        .export-feat {
+            display:flex; gap:14px; align-items:flex-start;
+        }
+        .export-feat-icon {
+            flex-shrink:0; width:44px; height:44px; border-radius:12px;
+            background:var(--cream); display:flex; align-items:center;
+            justify-content:center; font-size:1.2rem;
+        }
+        .export-feat h4 { font-size:0.95rem; font-weight:700; margin-bottom:2px; }
+        .export-feat p { font-size:0.83rem; color:var(--text-light); }
+        .export-certs {
+            display:flex; gap:12px; margin-top:28px; flex-wrap:wrap;
+        }
+        .export-cert-tag {
+            background:var(--primary); color:white;
+            padding:6px 16px; border-radius:50px;
+            font-size:0.75rem; font-weight:700; letter-spacing:0.5px;
+        }
 
         /* ===== BENEFITS BAR ===== */
         .benefits-bar { background:var(--primary-dark); color:white; padding:28px 0; }
@@ -432,13 +486,10 @@
 
         /* ===== RESPONSIVE ===== */
         @media(max-width:968px) {
-            .hero-grid { grid-template-columns:1fr; gap:40px; text-align:center; }
-            .hero p { margin:0 auto 36px; }
-            .hero-buttons { justify-content:center; }
-            .hero-img-wrap { width:340px; height:340px; margin:0 auto; }
-            .floating-badge.top-left { left:10px; top:0; }
-            .floating-badge.bottom-right { right:10px; bottom:10px; }
+            .hero-stats { gap:24px; }
+            .hero-stat .hs-val { font-size:1.6rem; }
             .why-grid { grid-template-columns:1fr; gap:48px; }
+            .export-grid { grid-template-columns:1fr; gap:40px; }
             .process-visual { grid-template-columns:1fr; }
             .process-img img { height:300px; }
             .footer-grid { grid-template-columns:1fr 1fr; gap:32px; }
@@ -446,8 +497,10 @@
         @media(max-width:768px) {
             .nav-links { display:none; }
             .menu-toggle { display:block; }
-            .hero { padding:110px 0 60px; }
+            .hero { min-height:100svh; }
             .hero h1 { font-size:2.2rem; }
+            .hero-stats { gap:20px; }
+            .export-countries { grid-template-columns:1fr; }
             .benefits-grid { grid-template-columns:repeat(2,1fr); gap:16px; }
             .product-grid { grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
             .sizes-grid { grid-template-columns:repeat(2,1fr); }
@@ -461,8 +514,9 @@
         }
         @media(max-width:480px) {
             .hero h1 { font-size:1.8rem; }
-            .hero-img-wrap { width:280px; height:280px; border-radius:20px; }
-            .floating-badge { display:none; }
+            .hero-stats { gap:16px; }
+            .hero-stat .hs-val { font-size:1.3rem; }
+            .hero-stat .hs-label { font-size:0.7rem; }
             .product-grid { grid-template-columns:1fr; }
             .sizes-grid { grid-template-columns:1fr 1fr; }
             .gallery-grid { grid-template-columns:1fr 1fr; }
@@ -493,6 +547,7 @@
             <li><a href="#productos">Productos</a></li>
             <li><a href="#por-que">Por qu&eacute;</a></li>
             <li><a href="#negocios">Negocios</a></li>
+            <li><a href="#exportacion">Exportaci&oacute;n</a></li>
             <li><a href="#proceso">Proceso</a></li>
             <li><a href="#contacto" class="btn btn-primary nav-cta">Cont&aacute;ctanos</a></li>
         </ul>
@@ -504,41 +559,48 @@
     <a href="#productos" onclick="closeMobile()">Productos</a>
     <a href="#por-que" onclick="closeMobile()">Por qu&eacute; Frutt&eacute;</a>
     <a href="#negocios" onclick="closeMobile()">Para Negocios</a>
+    <a href="#exportacion" onclick="closeMobile()">Exportaci&oacute;n</a>
     <a href="#proceso" onclick="closeMobile()">Proceso</a>
     <a href="#contacto" class="btn btn-primary" onclick="closeMobile()">Cont&aacute;ctanos</a>
 </div>
 
 <!-- HERO -->
 <section class="hero">
-    <div class="container hero-grid">
+    <div class="hero-video">
+        <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1490885578174-acda8905c2c6?w=1600&q=80">
+            <source src="https://assets.mixkit.co/videos/17139/17139-720.mp4" type="video/mp4">
+        </video>
+    </div>
+    <div class="container">
         <div class="hero-content">
-            <div class="hero-badge">100% Natural &middot; Sin conservantes &middot; Sin congelador</div>
+            <div class="hero-badge">&#127807; 100% Natural &middot; Sin conservantes &middot; De Colombia al mundo</div>
             <h1>Pulpa de fruta <em>real</em>, lista cuando t&uacute; quieras</h1>
-            <p>Pasteurizada, de larga vida, con todo el sabor de la fruta colombiana. Abre y sirve &mdash; sin descongelar, sin complicaciones.</p>
+            <p>Pasteurizada, de larga vida, sin congelador. El sabor de la fruta colombiana para tu hogar, tu negocio o tu pa&iacute;s. Exportamos a 3 continentes.</p>
             <div class="hero-buttons">
                 <a href="#productos" class="btn btn-primary">Ver productos y precios</a>
-                <a href="#negocios" class="btn btn-outline">Para tu negocio</a>
+                <a href="#negocios" class="btn btn-white">Para tu negocio</a>
             </div>
-        </div>
-        <div class="hero-visual">
-            <div class="hero-img-wrap">
-                <img src="https://images.unsplash.com/photo-1546173159-315724a31696?w=800&q=80" alt="Frutas tropicales colombianas frescas" loading="eager">
-                <div class="hero-img-overlay"></div>
-                <div class="hero-img-text">
-                    <div class="hit">Cosecha colombiana</div>
-                    <div class="hiv">De la finca a tu mesa</div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hs-val">6</div>
+                    <div class="hs-label">Sabores tropicales</div>
                 </div>
-                <div class="floating-badge top-left">
-                    <span class="fb-icon green">&#10003;</span>
-                    Sin congelador
+                <div class="hero-stat">
+                    <div class="hs-val">24</div>
+                    <div class="hs-label">Meses de vida &uacute;til</div>
                 </div>
-                <div class="floating-badge bottom-right">
-                    <span class="fb-icon orange">&#9201;</span>
-                    Hasta 24 meses
+                <div class="hero-stat">
+                    <div class="hs-val">8+</div>
+                    <div class="hs-label">Pa&iacute;ses de exportaci&oacute;n</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hs-val">0%</div>
+                    <div class="hs-label">Conservantes</div>
                 </div>
             </div>
         </div>
     </div>
+    <div class="hero-scroll">DESCUBRE<span>&#8595;</span></div>
 </section>
 
 <!-- BENEFITS BAR -->
@@ -914,6 +976,121 @@
     </div>
 </section>
 
+<!-- EXPORT -->
+<section class="export" id="exportacion">
+    <div class="container">
+        <div class="export-header">
+            <div class="section-label">De Colombia al Mundo</div>
+            <h2 class="section-title">Exportamos sabor colombiano a 3 continentes</h2>
+            <p class="section-subtitle">Empaque as&eacute;ptico de grado industrial. Contenedor seco est&aacute;ndar (sin refrigeraci&oacute;n). 24 meses de vida &uacute;til. Certificaciones internacionales.</p>
+        </div>
+
+        <div class="export-grid">
+            <div>
+                <div class="export-countries">
+                    <div class="export-country">
+                        <span class="export-flag">&#127482;&#127480;</span>
+                        <div class="export-country-info">
+                            <div class="export-country-name">Estados Unidos</div>
+                            <div class="export-country-detail">Principal destino. Miami, NY, LA, TX.</div>
+                        </div>
+                    </div>
+                    <div class="export-country">
+                        <span class="export-flag">&#127466;&#127480;</span>
+                        <div class="export-country-info">
+                            <div class="export-country-name">Espa&ntilde;a</div>
+                            <div class="export-country-detail">Madrid, Barcelona. Comunidad latina.</div>
+                        </div>
+                    </div>
+                    <div class="export-country">
+                        <span class="export-flag">&#127475;&#127473;</span>
+                        <div class="export-country-info">
+                            <div class="export-country-name">Pa&iacute;ses Bajos</div>
+                            <div class="export-country-detail">Hub log&iacute;stico europeo. R&oacute;tterdam.</div>
+                        </div>
+                    </div>
+                    <div class="export-country">
+                        <span class="export-flag">&#127463;&#127466;</span>
+                        <div class="export-country-info">
+                            <div class="export-country-name">B&eacute;lgica</div>
+                            <div class="export-country-detail">Crecimiento +233% en 2024.</div>
+                        </div>
+                    </div>
+                    <div class="export-country">
+                        <span class="export-flag">&#127468;&#127463;</span>
+                        <div class="export-country-info">
+                            <div class="export-country-name">Reino Unido</div>
+                            <div class="export-country-detail">Mercado premium de pur&eacute;s.</div>
+                        </div>
+                    </div>
+                    <div class="export-country">
+                        <span class="export-flag">&#127464;&#127473;</span>
+                        <div class="export-country-info">
+                            <div class="export-country-name">Chile</div>
+                            <div class="export-country-detail">Mercado LatAm en crecimiento.</div>
+                        </div>
+                    </div>
+                    <div class="export-country">
+                        <span class="export-flag">&#127464;&#127462;</span>
+                        <div class="export-country-info">
+                            <div class="export-country-name">Canad&aacute;</div>
+                            <div class="export-country-detail">Toronto, Vancouver. Demanda tropical.</div>
+                        </div>
+                    </div>
+                    <div class="export-country">
+                        <span class="export-flag">&#127477;&#127462;</span>
+                        <div class="export-country-info">
+                            <div class="export-country-name">Panam&aacute;</div>
+                            <div class="export-country-detail">Hub centroamericano.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="export-content">
+                <h3 style="font-family:'Playfair Display',serif; font-size:1.6rem; color:var(--primary-dark); margin-bottom:8px;">Ventaja as&eacute;ptica</h3>
+                <p style="color:var(--text-mid); margin-bottom:24px;">Nuestro empaque as&eacute;ptico elimina la necesidad de contenedores refrigerados, reduciendo costos de env&iacute;o hasta un 50% y simplificando la log&iacute;stica internacional.</p>
+                <div class="export-features">
+                    <div class="export-feat">
+                        <div class="export-feat-icon">&#128674;</div>
+                        <div>
+                            <h4>Contenedor seco est&aacute;ndar</h4>
+                            <p>Sin reefer. ~50% ahorro en flete mar&iacute;timo vs. congelada.</p>
+                        </div>
+                    </div>
+                    <div class="export-feat">
+                        <div class="export-feat-icon">&#128197;</div>
+                        <div>
+                            <h4>24 meses de vida &uacute;til</h4>
+                            <p>Tolera tr&aacute;nsito oce&aacute;nico de 30-60 d&iacute;as sin riesgo.</p>
+                        </div>
+                    </div>
+                    <div class="export-feat">
+                        <div class="export-feat-icon">&#127758;</div>
+                        <div>
+                            <h4>Arancel 0% a Europa</h4>
+                            <p>Colombia tiene acceso libre de aranceles para pur&eacute; de mango a la UE.</p>
+                        </div>
+                    </div>
+                    <div class="export-feat">
+                        <div class="export-feat-icon">&#128230;</div>
+                        <div>
+                            <h4>Formatos B2B</h4>
+                            <p>Bag-in-Box 20L y tambores as&eacute;pticos de 200L. Precios FOB.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="export-certs">
+                    <span class="export-cert-tag">HACCP</span>
+                    <span class="export-cert-tag">ISO 9001</span>
+                    <span class="export-cert-tag">INVIMA</span>
+                    <span class="export-cert-tag">Global GAP</span>
+                    <span class="export-cert-tag">ICA Fitosanitario</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- PROCESS -->
 <section class="process" id="proceso">
     <div class="container">
@@ -1013,7 +1190,7 @@
 <section class="cta-section" id="contacto">
     <div class="container">
         <h2>&iquest;Listo para probar Frutt&eacute;?</h2>
-        <p>Escr&iacute;benos por WhatsApp o correo. Consumidor, tienda, restaurante o importador &mdash; tenemos la presentaci&oacute;n perfecta para ti.</p>
+        <p>Consumidor, tienda, restaurante o importador internacional &mdash; tenemos la presentaci&oacute;n perfecta para ti. Escr&iacute;benos.</p>
         <div class="cta-buttons">
             <a href="https://wa.me/573001234567?text=Hola%2C%20me%20interesa%20Frutt%C3%A9" class="btn btn-whatsapp" target="_blank">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1037,6 +1214,7 @@
                 <a href="#productos">Sabores y precios</a>
                 <a href="#productos">Presentaciones</a>
                 <a href="#negocios">Precios mayoristas</a>
+                <a href="#exportacion">Exportaci&oacute;n</a>
             </div>
             <div class="footer-col">
                 <h4>Empresa</h4>
@@ -1053,7 +1231,7 @@
         </div>
         <div class="footer-bottom">
             <span>&copy; 2026 Frutt&eacute;. Todos los derechos reservados.</span>
-            <span>Hecho con fruta colombiana</span>
+            <span>Hecho en Colombia &middot; Exportado al mundo</span>
         </div>
     </div>
 </footer>
